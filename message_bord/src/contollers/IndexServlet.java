@@ -16,7 +16,7 @@ import utils.DBUtil;
  */
 @WebServlet("/index")
 public class IndexServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+        private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -26,16 +26,15 @@ public class IndexServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    EntityManager em = DBUtil.createEntityManager();
+        /**
+         * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+         */
+        protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+            EntityManager em = DBUtil.createEntityManager();
 
-        List<message> messages = em.createNamedQuery("getAllMessages", message.class).getResultList();
-        response.getWriter().append(Integer.valueOf(messages.size()).toString());
+            List<message> messages = em.createNamedQuery("getAllMessages", message.class).getResultList();
+            response.getWriter().append(Integer.valueOf(messages.size()).toString());
 
-        em.close();
-	}
-
+            em.close();
+        }
 }
